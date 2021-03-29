@@ -13,6 +13,7 @@ import net.minecraft.util.registry.Registry;
 import penguinatic.penguinfanatic.block.DisappearingIce;
 import penguinatic.penguinfanatic.items.PenguinFeatherItem;
 import penguinatic.penguinfanatic.items.WalkingStickItem;
+import penguinatic.penguinfanatic.registry.EntityRegistry;
 
 public class PenguinFanatic implements ModInitializer {
 
@@ -25,6 +26,7 @@ public class PenguinFanatic implements ModInitializer {
     public void onInitialize() {
         registerBlocks();
         registerItems();
+        new EntityRegistry().register();
     }
 
     public static final DisappearingIce DISAPPEARING_ICE = new DisappearingIce(AbstractBlock.Settings.of(Material.ICE).slipperiness(0.98F).ticksRandomly().strength(0.5F).sounds(BlockSoundGroup.GLASS).nonOpaque());
@@ -40,4 +42,5 @@ public class PenguinFanatic implements ModInitializer {
         Registry.register(Registry.ITEM, new Identifier("penguinfanatic","penguin_feather"), PENGUIN_FEATHER);
         Registry.register(Registry.ITEM, new Identifier("penguinfanatic", "walking_stick"), WALKING_STICK);
     }
+
 }
