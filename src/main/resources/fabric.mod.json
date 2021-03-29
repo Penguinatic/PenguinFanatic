@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "id": "PenguinFanatic",
+  "version": "${version}",
+  "name": "PenguinFanatic",
+  "description": "",
+  "authors": [],
+  "contact": {},
+  "license": "MIT",
+  "icon": "assets/PenguinFanatic/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "client": [
+      "penguinatic.penguinfanatic.client.PenguinFanaticClient"
+    ],
+    "main": [
+      "penguinatic.penguinfanatic.PenguinFanatic"
+    ]
+  },
+  "mixins": [
+    "PenguinFanatic.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.11.3",
+    "fabric": "*",
+    "minecraft": "1.16.5"
+  }
+}
