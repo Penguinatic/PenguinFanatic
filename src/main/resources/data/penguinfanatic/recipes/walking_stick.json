@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "F",
+    "#",
+    "#"
+  ],
+  "key": {
+    "F": {
+      "item": "penguinfanatic:penguin_feather"
+    },
+    "#": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "item": "penguinfanatic:walking_stick"
+  }
+}
