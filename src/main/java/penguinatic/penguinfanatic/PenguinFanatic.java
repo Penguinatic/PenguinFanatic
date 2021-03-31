@@ -29,17 +29,17 @@ public class PenguinFanatic implements ModInitializer {
 
     @Override
     public void onInitialize() {
-        //BlocksRegistry.register();
-        registerBlocks();
+        BlocksRegistry.register();
+        //registerBlocks();
         registerItems();
         new EntityRegistry().register();
         initSpawns();
     }
 
-    public static final DisappearingIce DISAPPEARING_ICE = new DisappearingIce(AbstractBlock.Settings.of(Material.ICE).slipperiness(0.98F).ticksRandomly().strength(0.5F).sounds(BlockSoundGroup.GLASS).nonOpaque());
+    //public static final DisappearingIce DISAPPEARING_ICE = new DisappearingIce(AbstractBlock.Settings.of(Material.ICE).slipperiness(0.98F).ticksRandomly().strength(0.5F).sounds(BlockSoundGroup.GLASS).nonOpaque());
 
     public void registerBlocks() {
-        Registry.register(Registry.BLOCK, new Identifier("penguinfanatic", "disappearing_ice"), DISAPPEARING_ICE);
+        //Registry.register(Registry.BLOCK, new Identifier("penguinfanatic", "disappearing_ice"), DISAPPEARING_ICE);
     }
 
     public static final PenguinFeatherItem PENGUIN_FEATHER = new PenguinFeatherItem(new FabricItemSettings().group(PenguinFanatic.PENGUIN_FANATIC_GROUP));

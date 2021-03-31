@@ -10,6 +10,7 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
+import penguinatic.penguinfanatic.registry.BlocksRegistry;
 
 public class WalkingStickItem extends Item {
 
@@ -42,7 +43,7 @@ public class WalkingStickItem extends Item {
                 && (world.getBlockState(entity.getBlockPos().down()).getBlock() == Blocks.WATER && world.getBlockState(entity.getBlockPos().down()).getFluidState().isStill()
                 || world.getBlockState(entity.getBlockPos().down()).getBlock() == Blocks.AIR)
                 && !entity.isSneaking()) {
-            world.setBlockState(entity.getBlockPos().down(), PenguinFanatic.DISAPPEARING_ICE.getDefaultState());
+            world.setBlockState(entity.getBlockPos().down(), BlocksRegistry.DISAPPEARING_ICE.getDefaultState());
         }
     }
 }
