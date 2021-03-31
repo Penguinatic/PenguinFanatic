@@ -6,9 +6,7 @@ import penguinatic.penguinfanatic.entity.render.PenguinEntityRender;
 public class EntityRenderRegistry {
 
     public static void register() {
-        EntityRendererRegistry.INSTANCE.register(EntityRegistry.PENGUIN, (dispatcher, context) -> {
-            return new PenguinEntityRender(dispatcher);
-        });
+        EntityRendererRegistry.INSTANCE.register(EntityRegistry.PENGUIN, (dispatcher, context) -> new PenguinEntityRender(dispatcher));
     }
 
 }
