@@ -17,6 +17,7 @@ import net.minecraft.world.biome.Biome;
 import penguinatic.penguinfanatic.block.DisappearingIce;
 import penguinatic.penguinfanatic.items.PenguinFeatherItem;
 import penguinatic.penguinfanatic.items.WalkingStickItem;
+import penguinatic.penguinfanatic.registry.BlocksRegistry;
 import penguinatic.penguinfanatic.registry.EntityRegistry;
 
 public class PenguinFanatic implements ModInitializer {
@@ -28,6 +29,7 @@ public class PenguinFanatic implements ModInitializer {
 
     @Override
     public void onInitialize() {
+        //BlocksRegistry.register();
         registerBlocks();
         registerItems();
         new EntityRegistry().register();
