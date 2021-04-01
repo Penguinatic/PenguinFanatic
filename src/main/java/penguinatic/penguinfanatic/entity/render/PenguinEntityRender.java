@@ -5,7 +5,6 @@ import net.minecraft.client.render.entity.MobEntityRenderer;
 import net.minecraft.util.Identifier;
 import penguinatic.penguinfanatic.entity.PenguinEntity;
 import penguinatic.penguinfanatic.entity.model.PenguinEntityModel;
-import penguinatic.penguinfanatic.entity.model.PenguinEntityModelOld;
 
 public class PenguinEntityRender extends MobEntityRenderer<PenguinEntity, PenguinEntityModel> {
 
