@@ -43,7 +43,12 @@ public class WalkingStickItem extends Item {
                 && (world.getBlockState(entity.getBlockPos().down()).getBlock() == Blocks.WATER && world.getBlockState(entity.getBlockPos().down()).getFluidState().isStill()
                 || world.getBlockState(entity.getBlockPos().down()).getBlock() == Blocks.AIR)
                 && !entity.isSneaking()) {
-            world.setBlockState(entity.getBlockPos().down(), BlocksRegistry.DISAPPEARING_ICE.getDefaultState());
+
+            if (world.getBlockState(entity.getBlockPos().down()).getBlock() == Blocks.WATER) {
+                world.setBlockState(entity.getBlockPos().down(), Blocks.FROSTED_ICE.getDefaultState());
+            } else {
+                world.setBlockState(entity.getBlockPos().down(), BlocksRegistry.DISAPPEARING_ICE.getDefaultState());
+            }
         }
     }
 }
