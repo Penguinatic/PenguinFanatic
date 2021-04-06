@@ -12,9 +12,9 @@ import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
 import penguinatic.penguinfanatic.registry.BlocksRegistry;
 
-public class WalkingStickItem extends Item {
+public class IcePathGemstoneItem extends Item {
 
-    public WalkingStickItem(Settings settings) {
+    public IcePathGemstoneItem(Settings settings) {
         super(settings);
     }
 

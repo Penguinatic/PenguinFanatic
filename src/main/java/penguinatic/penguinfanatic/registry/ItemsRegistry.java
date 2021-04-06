@@ -8,7 +8,7 @@ import net.minecraft.item.Item;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 import penguinatic.penguinfanatic.PenguinFanatic;
-import penguinatic.penguinfanatic.items.WalkingStickItem;
+import penguinatic.penguinfanatic.items.IcePathGemstoneItem;
 import penguinatic.penguinfanatic.materials.PenguinArmorMaterial;
 
 public class ItemsRegistry {
@@ -16,7 +16,7 @@ public class ItemsRegistry {
     public static final Item PENGUIN_FEATHER = new Item(new FabricItemSettings().group(PenguinFanatic.PENGUIN_FANATIC_GROUP));
     public static final Item PENGUIN_STEEL = new Item(new FabricItemSettings().group(PenguinFanatic.PENGUIN_FANATIC_GROUP));
 
-    public static final WalkingStickItem WALKING_STICK = new WalkingStickItem(new FabricItemSettings().group(PenguinFanatic.PENGUIN_FANATIC_GROUP));
+    public static final IcePathGemstoneItem ICE_PATH_GEMSTONE = new IcePathGemstoneItem(new FabricItemSettings().group(PenguinFanatic.PENGUIN_FANATIC_GROUP));
 
     public static final ArmorMaterial PENGUIN_ARMOR_MATERIAL = new PenguinArmorMaterial();
     public static final Item PENGUIN_HELMET = new ArmorItem(PENGUIN_ARMOR_MATERIAL, EquipmentSlot.HEAD, new Item.Settings().group(PenguinFanatic.PENGUIN_FANATIC_GROUP));
@@ -28,7 +28,7 @@ public class ItemsRegistry {
         Registry.register(Registry.ITEM, new Identifier("penguinfanatic","penguin_feather"), PENGUIN_FEATHER);
         Registry.register(Registry.ITEM, new Identifier("penguinfanatic", "penguin_steel"), PENGUIN_STEEL);
 
-        Registry.register(Registry.ITEM, new Identifier("penguinfanatic", "walking_stick"), WALKING_STICK);
+        Registry.register(Registry.ITEM, new Identifier("penguinfanatic", "ice_path_gemstone"), ICE_PATH_GEMSTONE);
 
         Registry.register(Registry.ITEM, new Identifier("penguinfanatic", "penguin_helmet"), PENGUIN_HELMET);
         Registry.register(Registry.ITEM, new Identifier("penguinfanatic", "penguin_chestplate"), PENGUIN_CHESTPLATE);
