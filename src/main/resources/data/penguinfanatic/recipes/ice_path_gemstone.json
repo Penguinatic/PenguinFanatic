@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#I#",
+    "IFI",
+    "#I#"
+  ],
+  "key": {
+    "#": {
+      "item": "penguinfanatic:penguin_steel"
+    },
+    "I": {
+      "item": "minecraft:packed_ice"
+    },
+    "F": {
+      "item": "penguinfanatic:penguin_feather"
+    }
+  },
+  "result": {
+    "item": "penguinfanatic:ice_path_gemstone"
+  }
+}
