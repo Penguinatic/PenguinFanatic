@@ -12,8 +12,12 @@ import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.entity.passive.PassiveEntity;
 import net.minecraft.entity.passive.PolarBearEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.Items;
 import net.minecraft.server.world.ServerWorld;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.registry.RegistryKey;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
@@ -31,6 +35,8 @@ public class PenguinEntity extends AnimalEntity {
         super(entityType, world);
     }
 
+    public int eggLayTime = this.random.nextInt(6000) + 6000;
+
     @Nullable
     @Override
     public PassiveEntity createChild(ServerWorld world, PassiveEntity entity) {
@@ -44,6 +50,17 @@ public class PenguinEntity extends AnimalEntity {
         this.goalSelector.add(5, new WanderAroundFarGoal(this, 0.3D));
         this.goalSelector.add(6, new LookAtEntityGoal(this, PlayerEntity.class, 8.0F));
         this.goalSelector.add(6, new LookAroundGoal(this));
+
+    }
+
+    public void tickMovement() {
+        super.tickMovement();
+
+        if (!this.world.isClient && this.isAlive() && !this.isBaby() && --this.eggLayTime <= 0) {
+            this.playSound(SoundEvents.ENTITY_CHICKEN_EGG, 1.0F, (this.random.nextFloat() - this.random.nextFloat()) * 0.2F + 1.0F);
+            this.dropItem(Items.EGG);
+            this.eggLayTime = this.random.nextInt(6000) + 6000;
+        }
 
     }
 }
