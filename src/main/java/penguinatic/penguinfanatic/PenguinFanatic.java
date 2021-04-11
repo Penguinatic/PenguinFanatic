@@ -9,7 +9,6 @@ import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
 import net.minecraft.world.biome.Biome;
-import penguinatic.penguinfanatic.registry.BlocksRegistry;
 import penguinatic.penguinfanatic.registry.EntityRegistry;
 import penguinatic.penguinfanatic.registry.ItemsRegistry;
 
@@ -22,7 +21,6 @@ public class PenguinFanatic implements ModInitializer {
 
     @Override
     public void onInitialize() {
-        BlocksRegistry.register();
         ItemsRegistry.register();
         new EntityRegistry().register();
         initSpawns();
