@@ -37,20 +37,11 @@ public class PenguinEntity extends AnimalEntity {
         return null;
     }
 
-    public static boolean canSpawn(EntityType<PenguinEntity> type, WorldAccess world, SpawnReason spawnReason, BlockPos pos, Random random) {
-        Optional<RegistryKey<Biome>> optional = world.getBiomeKey(pos);
-        if (!Objects.equals(optional, Optional.of(BiomeKeys.FROZEN_OCEAN)) && !Objects.equals(optional, Optional.of(BiomeKeys.DEEP_FROZEN_OCEAN))) {
-            return isValidNaturalSpawn(type, world, spawnReason, pos, random);
-        } else {
-            return world.getBaseLightLevel(pos, 0) > 8 && world.getBlockState(pos.down()).isOf(Blocks.ICE);
-        }
-    }
-
     @Override
     protected void initGoals() {
         super.initGoals();
         this.targetSelector.add(0, new FollowTargetGoal(this, PlayerEntity.class, true));
-        this.goalSelector.add(5, new WanderAroundFarGoal(this, 5.0D));
+        this.goalSelector.add(5, new WanderAroundFarGoal(this, 0.3D));
         this.goalSelector.add(6, new LookAtEntityGoal(this, PlayerEntity.class, 8.0F));
         this.goalSelector.add(6, new LookAroundGoal(this));
 

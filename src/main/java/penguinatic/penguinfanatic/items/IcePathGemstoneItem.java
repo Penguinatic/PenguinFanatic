@@ -1,5 +1,6 @@
 package penguinatic.penguinfanatic.items;
 
+import net.minecraft.enchantment.FrostWalkerEnchantment;
 import penguinatic.penguinfanatic.PenguinFanatic;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.Entity;
@@ -39,6 +40,9 @@ public class IcePathGemstoneItem extends Item {
     public void inventoryTick(ItemStack stack, World world, Entity entity, int slot, boolean selected) {
         super.inventoryTick(stack, world, entity, slot, selected);
 
+        PlayerEntity player = (PlayerEntity) entity;
+        Hand hand = player.getActiveHand();
+
         if (stack.hasTag() && stack.getTag().getBoolean("on")
                 && (world.getBlockState(entity.getBlockPos().down()).getBlock() == Blocks.WATER && world.getBlockState(entity.getBlockPos().down()).getFluidState().isStill()
                 || world.getBlockState(entity.getBlockPos().down()).getBlock() == Blocks.AIR)
@@ -48,6 +52,7 @@ public class IcePathGemstoneItem extends Item {
                 world.setBlockState(entity.getBlockPos().down(), Blocks.FROSTED_ICE.getDefaultState());
             } else {
                 world.setBlockState(entity.getBlockPos().down(), BlocksRegistry.DISAPPEARING_ICE.getDefaultState());
+                stack.damage(1, player, (p) -> {p.sendToolBreakStatus(hand);});
             }
         }
     }

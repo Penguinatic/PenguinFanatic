@@ -16,7 +16,7 @@ public class ItemsRegistry {
     public static final Item PENGUIN_FEATHER = new Item(new FabricItemSettings().group(PenguinFanatic.PENGUIN_FANATIC_GROUP));
     public static final Item PENGUIN_STEEL = new Item(new FabricItemSettings().group(PenguinFanatic.PENGUIN_FANATIC_GROUP));
 
-    public static final IcePathGemstoneItem ICE_PATH_GEMSTONE = new IcePathGemstoneItem(new FabricItemSettings().group(PenguinFanatic.PENGUIN_FANATIC_GROUP));
+    public static final IcePathGemstoneItem ICE_PATH_GEMSTONE = new IcePathGemstoneItem(new FabricItemSettings().group(PenguinFanatic.PENGUIN_FANATIC_GROUP).maxDamage(5));
 
     public static final ArmorMaterial PENGUIN_ARMOR_MATERIAL = new PenguinArmorMaterial();
     public static final Item PENGUIN_HELMET = new ArmorItem(PENGUIN_ARMOR_MATERIAL, EquipmentSlot.HEAD, new Item.Settings().group(PenguinFanatic.PENGUIN_FANATIC_GROUP));
