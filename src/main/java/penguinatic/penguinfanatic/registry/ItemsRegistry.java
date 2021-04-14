@@ -13,7 +13,7 @@ public class ItemsRegistry {
 
     public static void register() {
         Registry.register(Registry.ITEM, new Identifier("penguinfanatic","penguin_feather"), PENGUIN_FEATHER);
-        Registry.register(Registry.ITEM, new Identifier("penguinfanatic","penguin_feather"), PENGUIN_EGG);
+        Registry.register(Registry.ITEM, new Identifier("penguinfanatic","penguin_egg"), PENGUIN_EGG);
     }
 
 }
