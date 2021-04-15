@@ -30,7 +30,7 @@ public class PenguinEntity extends AnimalEntity {
 
     public static DefaultAttributeContainer.Builder createPenguinAttributes() {
         return PenguinEntity.createMobAttributes()
-                .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 500.0D)
+                .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.2D)
                 .add(EntityAttributes.GENERIC_MAX_HEALTH, 6.0D);
     }
 
@@ -53,6 +53,7 @@ public class PenguinEntity extends AnimalEntity {
             this.dropItem(ItemsRegistry.PENGUIN_EGG);
             this.eggLayTime = this.random.nextInt(6000) + 6000;
         }
+
     }
 
     protected float getActiveEyeHeight(EntityPose pose, EntityDimensions dimensions) {
@@ -80,7 +81,7 @@ public class PenguinEntity extends AnimalEntity {
 //    }
 
     public PenguinEntity createChild(ServerWorld serverWorld, PassiveEntity passiveEntity) {
-        return (PenguinEntity) EntityRegistry.PENGUIN.create(serverWorld);
+        return EntityRegistry.PENGUIN.create(serverWorld);
     }
 
     public boolean isBreedingItem(ItemStack stack) {
