@@ -25,7 +25,9 @@ public class PenguinEntity extends AnimalEntity {
     }
 
     public static final Ingredient BREEDING_INGREDIENT = Ingredient.ofItems(Items.COD, Items.SALMON);
-    public int eggLayTime = this.random.nextInt(6000) + 6000;
+    public int dropRate = 6000;
+    public int eggLayTime = this.random.nextInt(dropRate) + dropRate;
+    public int featherDropTime = this.random.nextInt(dropRate) + dropRate;
 
     public static DefaultAttributeContainer.Builder createPenguinAttributes() {
         return PenguinEntity.createMobAttributes()
@@ -50,7 +52,12 @@ public class PenguinEntity extends AnimalEntity {
         if (!this.world.isClient && this.isAlive() && !this.isBaby() && --this.eggLayTime <= 0) {
             this.playSound(SoundEvents.ENTITY_CHICKEN_EGG, 1.0F, (this.random.nextFloat() - this.random.nextFloat()) * 0.2F + 1.0F);
             this.dropItem(ItemsRegistry.PENGUIN_EGG);
-            this.eggLayTime = this.random.nextInt(6000) + 6000;
+            this.eggLayTime = this.random.nextInt(dropRate) + dropRate;
+        }
+
+        if (!this.world.isClient && this.isAlive() && !this.isBaby() && --this.featherDropTime <= 0) {
+            this.dropItem(ItemsRegistry.PENGUIN_FEATHER);
+            this.featherDropTime = this.random.nextInt(dropRate) + dropRate;
         }
 
     }
