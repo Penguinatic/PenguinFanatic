@@ -55,7 +55,7 @@ public class PenguinEntity extends AnimalEntity {
             this.eggLayTime = this.random.nextInt(dropRate) + dropRate;
         }
 
-        if (!this.world.isClient && this.isAlive() && !this.isBaby() && --this.featherDropTime <= 0) {
+        if (!this.world.isClient && this.isAlive() && --this.featherDropTime <= 0) {
             this.dropItem(ItemsRegistry.PENGUIN_FEATHER);
             this.featherDropTime = this.random.nextInt(dropRate) + dropRate;
         }
