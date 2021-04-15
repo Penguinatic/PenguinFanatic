@@ -1,10 +1,17 @@
 {
   "itemGroup.penguinfanatic.general": "Penguin Fanatic",
+
   "item.penguinfanatic.penguin_feather": "Penguin Feather",
   "item.penguinfanatic.penguin_egg": "Penguin Egg",
   "item.penguinfanatic.ice_path_gemstone": "Ice Path Gemstone",
+
   "item.penguinfanatic.penguin_helmet": "Penguin Helmet",
   "item.penguinfanatic.penguin_chestplate": "Penguin Chestplate",
   "item.penguinfanatic.penguin_leggings": "Penguin Leggings",
-  "item.penguinfanatic.penguin_boots": "Penguin Boots"
+  "item.penguinfanatic.penguin_boots": "Penguin Boots",
+
+  "advancements.penguinfanatic.root.title": "Penguin Fanatic",
+  "advancements.penguinfanatic.root.desc": "These pleasant creatures are quite alright.",
+  "advancements.penguinfanatic.killed_penguin.title": "Murderer",
+  "advancements.penguinfanatic.killed_penguin.desc": "Some people just want to watch the world burn."
 }
