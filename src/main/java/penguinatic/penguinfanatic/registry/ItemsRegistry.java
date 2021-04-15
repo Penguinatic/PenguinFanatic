@@ -5,11 +5,12 @@ import net.minecraft.item.Item;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 import penguinatic.penguinfanatic.PenguinFanatic;
+import penguinatic.penguinfanatic.items.PenguinEggItem;
 
 public class ItemsRegistry {
 
     public static final Item PENGUIN_FEATHER = new Item(new FabricItemSettings().group(PenguinFanatic.PENGUIN_FANATIC_GROUP));
-    public static final Item PENGUIN_EGG = new Item(new FabricItemSettings().group(PenguinFanatic.PENGUIN_FANATIC_GROUP));
+    public static final PenguinEggItem PENGUIN_EGG = new PenguinEggItem(new FabricItemSettings().group(PenguinFanatic.PENGUIN_FANATIC_GROUP));
 
     public static void register() {
         Registry.register(Registry.ITEM, new Identifier("penguinfanatic","penguin_feather"), PENGUIN_FEATHER);
