@@ -14,7 +14,7 @@ public class EntityRegistry {
     public static final EntityType<PenguinEntity> PENGUIN = Registry.register(
             Registry.ENTITY_TYPE,
             new Identifier("penguinfanatic", "penguin"),
-            FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, PenguinEntity::new).dimensions(EntityDimensions.fixed(0.75f, 0.75f)).build()
+            FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, PenguinEntity::new).dimensions(EntityDimensions.fixed(0.75f, 1.25f)).build()
     );
 
     public static void register() {
