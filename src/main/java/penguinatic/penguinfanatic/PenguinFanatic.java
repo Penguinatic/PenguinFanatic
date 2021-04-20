@@ -22,7 +22,7 @@ public class PenguinFanatic implements ModInitializer {
     @Override
     public void onInitialize() {
         ItemsRegistry.register();
-        new EntityRegistry().register();
+        EntityRegistry.register();
         initSpawns();
     }
 
