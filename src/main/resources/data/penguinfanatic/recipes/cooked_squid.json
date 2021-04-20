@@ -1,0 +1,7 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "penguinfanatic:squid_raw"
+  },
+  "result": "penguinfanatic:squid_cooked"
+}
