@@ -24,7 +24,7 @@ public class PenguinEntity extends AnimalEntity {
         super(entityType, world);
     }
 
-    public static final Ingredient BREEDING_INGREDIENT = Ingredient.ofItems(Items.COD, Items.SALMON);
+    public static final Ingredient BREEDING_INGREDIENT = Ingredient.ofItems(Items.COD, Items.SALMON, ItemsRegistry.SQUID_RAW);
     public int dropRate = 6000;
     public int eggLayTime = this.random.nextInt(dropRate) + dropRate;
     public int featherDropTime = this.random.nextInt(dropRate) + dropRate;
