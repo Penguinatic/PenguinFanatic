@@ -5,7 +5,7 @@ import net.minecraft.block.Material;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
-import penguinatic.penguinfanatic.block.DisappearingIce;
+import penguinatic.penguinfanatic.blocks.DisappearingIce;
 
 public class BlocksRegistry {
 

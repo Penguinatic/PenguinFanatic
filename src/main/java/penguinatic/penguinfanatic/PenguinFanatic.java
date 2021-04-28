@@ -13,8 +13,10 @@ import net.minecraft.loot.LootPool;
 import net.minecraft.loot.entry.ItemEntry;
 import net.minecraft.util.Identifier;
 import net.minecraft.world.biome.Biome;
+import penguinatic.penguinfanatic.registry.BlocksRegistry;
 import penguinatic.penguinfanatic.registry.EntityRegistry;
 import penguinatic.penguinfanatic.registry.ItemsRegistry;
+import penguinatic.penguinfanatic.registry.MultiBlockRegistry;
 
 public class PenguinFanatic implements ModInitializer {
 
@@ -25,6 +27,8 @@ public class PenguinFanatic implements ModInitializer {
 
     @Override
     public void onInitialize() {
+        BlocksRegistry.register();
+        MultiBlockRegistry.register();
         ItemsRegistry.register();
         EntityRegistry.register();
         registerLoot();
@@ -39,7 +43,7 @@ public class PenguinFanatic implements ModInitializer {
         LootTableLoadingCallback.EVENT.register(((resourceManager, manager, id, supplier, setter) -> {
             if(new Identifier("minecraft", "gameplay/fishing/fish").equals(id)) {
                 LootPool poolBuilder = FabricLootPoolBuilder.builder()
-                        .withEntry(ItemEntry.builder(ItemsRegistry.SQUID_RAW).weight(10).build()).build();
+                        .withEntry(ItemEntry.builder(ItemsRegistry.SQUID_RAW).build()).build();
 
                 supplier.withPool(poolBuilder);
             }

@@ -1,4 +1,4 @@
-package penguinatic.penguinfanatic.block;
+package penguinatic.penguinfanatic.blocks;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
