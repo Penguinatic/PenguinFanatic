@@ -9,10 +9,12 @@ import net.fabricmc.fabric.api.loot.v1.event.LootTableLoadingCallback;
 import net.minecraft.entity.SpawnGroup;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.loot.LootPool;
 import net.minecraft.loot.entry.ItemEntry;
 import net.minecraft.util.Identifier;
 import net.minecraft.world.biome.Biome;
+import penguinatic.penguinfanatic.mixin.LootTableBuilderAccessor;
 import penguinatic.penguinfanatic.registry.BlocksRegistry;
 import penguinatic.penguinfanatic.registry.EntityRegistry;
 import penguinatic.penguinfanatic.registry.ItemsRegistry;
@@ -42,10 +44,12 @@ public class PenguinFanatic implements ModInitializer {
     private static void registerLoot() {
         LootTableLoadingCallback.EVENT.register(((resourceManager, manager, id, supplier, setter) -> {
             if(new Identifier("minecraft", "gameplay/fishing/fish").equals(id)) {
-                LootPool poolBuilder = FabricLootPoolBuilder.builder()
-                        .withEntry(ItemEntry.builder(ItemsRegistry.SQUID_RAW).build()).build();
+                LootPool lootPool = ((LootTableBuilderAccessor) supplier).getPools().get(0);
+                FabricLootPoolBuilder lootPoolBuilder = FabricLootPoolBuilder.of(lootPool);
 
-                supplier.withPool(poolBuilder);
+                lootPoolBuilder.with(ItemEntry.builder(ItemsRegistry.SQUID_RAW).weight(10));
+
+                ((LootTableBuilderAccessor) supplier).getPools().set(0, lootPoolBuilder.build());
             }
 
             if(new Identifier("minecraft", "entities/squid").equals(id)) {

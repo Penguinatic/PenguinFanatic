@@ -4,6 +4,7 @@
   "package": "penguinatic.penguinfanatic.mixin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
+    "LootTableBuilderAccessor"
   ],
   "client": [
   ],
