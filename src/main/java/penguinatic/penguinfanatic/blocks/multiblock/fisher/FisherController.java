@@ -12,7 +12,6 @@ import net.minecraft.loot.LootTable;
 import net.minecraft.loot.LootTables;
 import net.minecraft.loot.context.LootContext;
 import net.minecraft.loot.context.LootContextParameters;
-import net.minecraft.loot.context.LootContextType;
 import net.minecraft.loot.context.LootContextTypes;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.text.LiteralText;
@@ -25,6 +24,8 @@ import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 import penguinatic.penguinfanatic.blocks.multiblock.AbstractMultiController;
+import penguinatic.penguinfanatic.registry.BlocksRegistry;
+import penguinatic.penguinfanatic.registry.MultiBlockRegistry;
 
 import java.util.List;
 import java.util.Random;
@@ -78,30 +79,67 @@ public class FisherController extends Block implements BlockEntityProvider {
             Inventory chest = (Inventory) world.getBlockEntity(chestLoc);
             boolean hasAdded = false;
 
-            LootContext.Builder fishContextBuilder = new LootContext.Builder((ServerWorld) world);
+            LootContext.Builder fishContextBuilder = new LootContext.Builder(world);
             LootTable fishLootTable = world.getServer().getLootManager().getTable(LootTables.FISHING_GAMEPLAY);
             List<ItemStack> fishList = fishLootTable.generateLoot(fishContextBuilder.parameter(LootContextParameters.TOOL, new ItemStack(Items.FISHING_ROD)).parameter(LootContextParameters.ORIGIN, new Vec3d(pos.getX(), pos.getY(), pos.getZ())).build(LootContextTypes.FISHING));
 
             Random rand = new Random();
             Item newItem = fishList.get(rand.nextInt(fishList.size())).getItem();
 
-            for (int i = 0; i < chest.size(); i++) {
-                int amount = chest.getStack(i).getCount();
+            System.out.println("Checking valid structure");
+            if (checkValidStruct(world, pos)) {
+                System.out.println("The structure was valid");
+                for (int i = 0; i < chest.size(); i++) {
+                    int amount = chest.getStack(i).getCount();
 
-                if (chest.getStack(i).getItem() == newItem
-                        && amount < 64
-                        && !hasAdded) {
-                    chest.setStack(i, new ItemStack(newItem, amount + 1));
-                    hasAdded = true;
-                } else if((chest.getStack(i)== ItemStack.EMPTY
-                        || chest.getStack(i)==null
-                        || chest.getStack(i).getCount()==0)
-                        && !hasAdded) {
-                    chest.setStack(i, new ItemStack(newItem, 1));
-                    hasAdded = true;
+                    if (chest.getStack(i).getItem() == newItem
+                            && amount < 64
+                            && !hasAdded) {
+                        chest.setStack(i, new ItemStack(newItem, amount + 1));
+                        hasAdded = true;
+                    } else if ((chest.getStack(i) == ItemStack.EMPTY
+                            || chest.getStack(i) == null
+                            || chest.getStack(i).getCount() == 0)
+                            && !hasAdded) {
+                        chest.setStack(i, new ItemStack(newItem, 1));
+                        hasAdded = true;
+                    }
                 }
             }
         }
         world.getBlockTickScheduler().schedule(pos, this, 20);
     }
+
+    public boolean checkValidStruct(ServerWorld world, BlockPos pos) {
+        boolean isValid = false;
+
+        if (world.getBlockState(pos.north()).getBlock().equals(MultiBlockRegistry.FISHER_POLE)
+                && world.getBlockEntity(pos.south()) instanceof Inventory
+                && (world.getBlockState(pos.down().east()).getBlock().equals(Blocks.WATER)
+                || world.getBlockState(pos.down().west()).getBlock().equals(Blocks.WATER))) {
+            System.out.println("Changing isValid value");
+            isValid = true;
+        } else if (world.getBlockState(pos.east()).getBlock().equals(MultiBlockRegistry.FISHER_POLE)
+                && world.getBlockEntity(pos.west()) instanceof Inventory
+                && (world.getBlockState(pos.down().north()).getBlock().equals(Blocks.WATER)
+                || world.getBlockState(pos.down().south()).getBlock().equals(Blocks.WATER))) {
+            System.out.println("Changing isValid value");
+            isValid = true;
+        } else if (world.getBlockState(pos.south()).getBlock().equals(MultiBlockRegistry.FISHER_POLE)
+                && world.getBlockEntity(pos.north()) instanceof Inventory
+                && (world.getBlockState(pos.down().east()).getBlock().equals(Blocks.WATER)
+                || world.getBlockState(pos.down().west()).getBlock().equals(Blocks.WATER))) {
+            System.out.println("Changing isValid value");
+            isValid = true;
+        } else if (world.getBlockState(pos.west()).getBlock().equals(MultiBlockRegistry.FISHER_POLE)
+                && world.getBlockEntity(pos.west()) instanceof Inventory
+                && (world.getBlockState(pos.down().north()).getBlock().equals(Blocks.WATER)
+                || world.getBlockState(pos.down().south()).getBlock().equals(Blocks.WATER))) {
+            System.out.println("Changing isValid value");
+            isValid = true;
+        }
+
+        return isValid;
+    }
+
 }
