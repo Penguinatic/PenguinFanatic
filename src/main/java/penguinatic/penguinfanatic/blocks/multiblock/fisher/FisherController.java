@@ -23,8 +23,6 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
-import penguinatic.penguinfanatic.blocks.multiblock.AbstractMultiController;
-import penguinatic.penguinfanatic.registry.BlocksRegistry;
 import penguinatic.penguinfanatic.registry.MultiBlockRegistry;
 
 import java.util.List;
@@ -61,19 +59,7 @@ public class FisherController extends Block implements BlockEntityProvider {
     @Override
     public void scheduledTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
 
-        BlockPos chestLoc;
-
-        if (world.getBlockEntity(pos.north()) instanceof Inventory) {
-            chestLoc = pos.north();
-        } else if (world.getBlockEntity(pos.east()) instanceof Inventory) {
-            chestLoc = pos.east();
-        } else if (world.getBlockEntity(pos.south()) instanceof Inventory) {
-            chestLoc = pos.south();
-        } else if (world.getBlockEntity(pos.west()) instanceof Inventory) {
-            chestLoc = pos.west();
-        } else {
-            chestLoc = null;
-        }
+        BlockPos chestLoc = getOutputLocation(world, pos);
 
         if (chestLoc != null) {
             Inventory chest = (Inventory) world.getBlockEntity(chestLoc);
@@ -140,6 +126,24 @@ public class FisherController extends Block implements BlockEntityProvider {
         }
 
         return isValid;
+    }
+
+    public BlockPos getOutputLocation(ServerWorld world, BlockPos pos) {
+        BlockPos outputLoc;
+
+        if (world.getBlockEntity(pos.north()) instanceof Inventory) {
+            outputLoc = pos.north();
+        } else if (world.getBlockEntity(pos.east()) instanceof Inventory) {
+            outputLoc = pos.east();
+        } else if (world.getBlockEntity(pos.south()) instanceof Inventory) {
+            outputLoc = pos.south();
+        } else if (world.getBlockEntity(pos.west()) instanceof Inventory) {
+            outputLoc = pos.west();
+        } else {
+            outputLoc = null;
+        }
+
+        return outputLoc;
     }
 
 }
